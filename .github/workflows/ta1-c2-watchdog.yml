@@ -1,0 +1,36 @@
+# INERT TEMPLATE — NOT ACTIVE. Copy to .github/workflows/ only after Gate C approval.
+# Semantic watchdog (gaps, consecutive failures, gate ceilings, tamper, clock skew). Liveness of BOTH
+# this job and the collector is guaranteed independently of GitHub by Healthchecks dead-man checks:
+# if GitHub stops scheduling entirely, the missing pings themselves raise the alert.
+# RC2: no workflow_dispatch. With watchdog_profile "burnin" the expected injected miss and permitted
+# organic misses are INFO (exit 0); only acceptance-threatening conditions exit 3 and /fail the check.
+name: ta1-c2-watchdog
+on:
+  schedule:
+    - cron: "52 * * * *"
+permissions:
+  contents: read
+jobs:
+  watch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Clone code and evidence (separate checkout from the collector)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git clone --quiet --depth 1 --branch main "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" code
+          git clone --quiet --branch evidence "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" evidence
+      - name: Evaluate and report to dead-man check
+        working-directory: code
+        env:
+          TA1_C2_WD_PING_URL: ${{ secrets.TA1_C2_WD_PING_URL }}  # Healthchecks check "ta1-c2-watchdog"
+        run: |
+          set +e
+          python3 -m ta1c2.cli watchdog --registration registration/TA1-C2-BURNIN-72H.json --backend git:../evidence > "$RUNNER_TEMP/wd.json"
+          rc=$?
+          cat "$RUNNER_TEMP/wd.json"
+          if [ "$rc" -eq 0 ]; then suffix=""; else suffix="/fail"; fi
+          curl -fsS -m 10 --retry 3 --data-binary @"$RUNNER_TEMP/wd.json" "${TA1_C2_WD_PING_URL}${suffix}" || true
+          exit $rc
