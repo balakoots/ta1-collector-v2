@@ -1,0 +1,25 @@
+{
+  "source": "ecb_fx",
+  "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+  "request_utc": "2026-10-10T21:34:58.066812+00:00",
+  "status": 200,
+  "headers": {
+    "Server": "myracloud",
+    "Date": "Sat, 10 Oct 2026 21:35:03 GMT",
+    "Content-Type": "text/xml",
+    "Transfer-Encoding": "chunked",
+    "Connection": "close",
+    "X-Frame-Options": "SAMEORIGIN",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains",
+    "Last-Modified": "Fri, 09 Oct 2026 13:56:35 GMT",
+    "X-XSS-Protection": "1; mode=block",
+    "Content-Disposition": "attachment;",
+    "Expires": "Fri, 09 Oct 2026 14:03:35 GMT",
+    "cache-control": "max-age=300",
+    "X-CDN": "1"
+  },
+  "final_url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml",
+  "receipt_utc": "2026-10-10T21:35:03.476650+00:00",
+  "sha256": "cf79007a1de55aea7158681ed3731e72ae15f80a92a916d7e0eb32f5640142cd",
+  "bytes": 1547
+}

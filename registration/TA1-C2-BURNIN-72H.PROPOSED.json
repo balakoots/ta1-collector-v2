@@ -1,0 +1,140 @@
+{
+  "acceptance": {
+    "every_slot_has_ledger_row": true,
+    "independent_reproduction_by": "Echo or Astra (not the builder)",
+    "injected_miss_alert_delivered_within_minutes": 75,
+    "injected_miss_alert_expected_at_minutes": 65,
+    "injected_miss_method": "Kootsy disables workflow ta1-c2-collector at slot-36 start minus 5 min (before the :07 trigger) and re-enables it after slot 36 ends (before slot 37 :07). Watchdog stays enabled. Both times recorded.",
+    "injected_miss_slot": 36,
+    "ledger_chain_and_all_artifacts_verified": true,
+    "min_in_slot_captures": 70,
+    "min_in_slot_captures_note": "of the 71 non-injected slots, i.e. at most one organic miss (equivalent to the 71/72 tolerance)",
+    "zero_persistence_incidents": true
+  },
+  "approval": {
+    "approved_by": null,
+    "approved_utc": null,
+    "decision_ref": null,
+    "gate": "C"
+  },
+  "approved": false,
+  "code_manifest": {
+    "__init__.py": "386143a31bc06700844e88419094360d77a77c2061cfcc5819c01c0c88b783c7",
+    "analysis.py": "c85e05f3a4b5f3e35d44f72bbcf45224637ef84cfb4a6fac7540b5574c0391a2",
+    "cli.py": "578f280ad79fb5aebf57cf9a1bb40324aa857b9a240becf2015dec49863859fd",
+    "collector.py": "96ba77669ad6a92f04628585d82cdd97bd4e6d6d83f74247dbab43a30563a664",
+    "core.py": "feac38b5be4abe651f9cf1ecd0db9e75d2287d928fbf6334c77da0c145c8a013",
+    "ledger.py": "be2a26f3de5d2b0fa13505824b5ac6dc7bb26db6cd1e131e0aa36d730749a3b4",
+    "notify.py": "e95425c785fe49eebc4ce9cb1ef96f05bbe0d09d82543d18d3732e60385ed01c",
+    "sources.py": "15a6c27d28584f22a77a3b9dd824c345a6693288d16d1cd81f9f0f68f75168a4",
+    "storage.py": "63c45b3ad5ed0ae4672ed5d182620245562eca629e9d480e8c472e3d0c1c16aa",
+    "verify.py": "fed2c61f1f5141f0aa0f93671b250e271ecfc8ee6a69f80ad8aeeeb2ffad398f",
+    "watchdog.py": "1f94a0a9081bce024336ae1036b42b1d30e3d391a32e2aea79aa1c9ba6a4bf6c"
+  },
+  "code_manifest_sha256": "73ceded4f095b5509d40e8851c75fe3695755f05d706885b7c4cf7958e34bb43",
+  "dead_man": {
+    "basis": "Healthchecks cron-check semantics (open source hc/api/models.py): down at next cron occurrence after the last ping + grace. Slot-aligned, independent of when the previous ping landed (Echo finding B4a).",
+    "collector_check": {
+      "grace_minutes": 60,
+      "guarantees": "any in-slot success (runner start <= :59:15, job <= 5 min, so ping < next :05) never alerts; a fully missed slot alerts at slot start + 65 min (A2 limit 75)",
+      "kind": "cron",
+      "manual_resume": true,
+      "name": "ta1-c2-collector",
+      "schedule": "5 * * * *",
+      "tz": "UTC"
+    },
+    "post_window": {
+      "action": "pause BOTH checks (manual_resume = sticky) and disable both workflows",
+      "owner": "Kootsy (Claude may assist under C-1b)",
+      "reason": "earliest possible post-window dead-man alert is window end + 65 min (Echo finding B4b)",
+      "target_minutes_after_end": 15,
+      "verification": "Healthchecks API read-only export: both checks status 'paused'; flips show no 'down' after window end except a genuine slot-72 miss (alert at end + 5 min)",
+      "window_minutes_after_end": [
+        5,
+        60
+      ]
+    },
+    "watchdog_check": {
+      "grace_minutes": 120,
+      "guarantees": "one dropped :52 watchdog run never alerts; two consecutive dropped runs alert",
+      "kind": "cron",
+      "manual_resume": true,
+      "name": "ta1-c2-watchdog",
+      "schedule": "0 * * * *",
+      "tz": "UTC"
+    }
+  },
+  "freshness_limit_s": 60,
+  "gates": {
+    "depth": 0.95,
+    "overall": 0.9,
+    "per_utc_hour": 0.8
+  },
+  "governance": "R16 PAUSE; R15 NO NEXT; 2025 SEALED; PAPER PAUSED; LIVE PROHIBITED. Public unauthenticated GET only. No accounts, credentials for exchanges, orders, transfers, backfill or signal research.",
+  "latest_start_margin_s": 45,
+  "max_attempts_per_slot": 2,
+  "mode": "live",
+  "planned_slots": 72,
+  "purpose": "ENGINEERING BURN-IN ONLY (Gate C). Never registered cost-study data; never pooled into TA1-COST-14D.2.",
+  "release": "2.0.0-rc3",
+  "request_timeout_s": 20,
+  "scheduler": {
+    "primary": "GitHub Actions cron :07 and :37 (best-effort, two triggers, idempotent); collector job timeout 5 min"
+  },
+  "sizes_aud": [
+    500,
+    1000,
+    2500
+  ],
+  "slot_seconds": 3600,
+  "sources": [
+    {
+      "auth": "none",
+      "key": "coinbase_BTC",
+      "method": "GET",
+      "url": "https://api.coinbase.com/api/v3/brokerage/market/product_book?product_id=BTC-USDC&limit=50"
+    },
+    {
+      "auth": "none",
+      "key": "coinspot_quote_BTC",
+      "method": "GET",
+      "url": "https://www.coinspot.com.au/pubapi/v2/latest/BTC"
+    },
+    {
+      "auth": "none",
+      "key": "coinspot_depth_BTC",
+      "method": "GET",
+      "url": "https://www.coinspot.com.au/pubapi/v2/orders/open/BTC"
+    },
+    {
+      "auth": "none",
+      "key": "coinbase_ETH",
+      "method": "GET",
+      "url": "https://api.coinbase.com/api/v3/brokerage/market/product_book?product_id=ETH-USDC&limit=50"
+    },
+    {
+      "auth": "none",
+      "key": "coinspot_quote_ETH",
+      "method": "GET",
+      "url": "https://www.coinspot.com.au/pubapi/v2/latest/ETH"
+    },
+    {
+      "auth": "none",
+      "key": "coinspot_depth_ETH",
+      "method": "GET",
+      "url": "https://www.coinspot.com.au/pubapi/v2/orders/open/ETH"
+    },
+    {
+      "auth": "none",
+      "key": "ecb_fx",
+      "method": "GET",
+      "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+    }
+  ],
+  "start_utc": null,
+  "status": "PROPOSED \u2014 NOT APPROVED. Collector refuses to run until approved=true, start_utc set, and arm token supplied.",
+  "study_id": "TA1-C2-BURNIN-72H",
+  "watchdog_grace_s": 900,
+  "watchdog_profile": "burnin",
+  "watchdog_profile_note": "Engineering acceptance only; registered study coverage gates are not evaluated during the burn-in (Echo finding B1)."
+}

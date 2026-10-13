@@ -1,0 +1,33 @@
+# INERT TEMPLATE — NOT ACTIVE. GitHub only runs workflows under .github/workflows/.
+# Copy there ONLY after Kootsy approves Gate C, with the approved registration committed on `main`.
+# Two triggers per hour (:07, :37) because GitHub cron is best-effort (runs can be late or dropped,
+# worst at :00). The collector is idempotent: the second trigger is a no-op once the slot is captured.
+# RC2: no workflow_dispatch — manual runs are not possible during a registered window (protocol A6).
+name: ta1-c2-collector
+on:
+  schedule:
+    - cron: "7 * * * *"
+    - cron: "37 * * * *"
+concurrency:
+  group: ta1-c2-collector
+  cancel-in-progress: false
+permissions:
+  contents: write                # push to the `evidence` branch only (protected: no force-push, no deletion)
+jobs:
+  collect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5            # RC3: bounds every ping before the next :05 dead-man boundary (start <= :59:15 + 5 min)
+    steps:
+      - name: Clone frozen code (main) and evidence branch — no third-party actions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git clone --quiet --depth 1 --branch main "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" code
+          git clone --quiet --branch evidence "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" evidence
+      - name: Collect current slot (exit 0 ok, 10 recorded source issue, 20 persistence, 30 halted, 40 refused)
+        working-directory: code
+        env:
+          TA1_C2_ARM: ${{ secrets.TA1_C2_ARM }}            # = SHA-256 of the APPROVED registration file
+          TA1_C2_PING_URL: ${{ secrets.TA1_C2_PING_URL }}  # Healthchecks check "ta1-c2-collector"
+        run: python3 -m ta1c2.cli run --registration registration/TA1-C2-BURNIN-72H.json --backend git:../evidence

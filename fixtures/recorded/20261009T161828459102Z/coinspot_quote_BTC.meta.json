@@ -1,0 +1,33 @@
+{
+  "source": "coinspot_quote_BTC",
+  "url": "https://www.coinspot.com.au/pubapi/v2/latest/BTC",
+  "request_utc": "2026-10-09T16:18:28.464356+00:00",
+  "status": 200,
+  "headers": {
+    "Date": "Fri, 09 Oct 2026 16:18:38 GMT",
+    "Content-Type": "application/json; charset=utf-8",
+    "Content-Length": "75",
+    "Connection": "close",
+    "x-frame-options": "SAMEORIGIN",
+    "x-content-type-options": "nosniff",
+    "x-xss-protection": "1; mode=block",
+    "strict-transport-security": "max-age=63072000",
+    "referrer-policy": "same-origin",
+    "cross-origin-opener-policy": "same-origin",
+    "content-security-policy": "base-uri 'none'; object-src 'none'; connect-src 'self'; img-src *; style-src 'unsafe-inline' 'self'; script-src https: 'nonce-68ff87ed4cd244aab6f6037935fe3edf' 'strict-dynamic' 'unsafe-inline';",
+    "Set-Cookie": "_csrf=0e1QeRyNdHHSMnK-w_dItI9K; Path=/; HttpOnly; Secure; SameSite=Strict",
+    "set-cookie": "_csrf=0e1QeRyNdHHSMnK-w_dItI9K; Path=/; HttpOnly; Secure; SameSite=Strict",
+    "Cache-Control": "no-cache, no-store, must-revalidate, private",
+    "pragma": "no-cache",
+    "expires": "0",
+    "etag": "W/\"4b-aP5FwGFq6HLflKkp835AxdiCL20\"",
+    "vary": "Accept-Encoding",
+    "cf-cache-status": "DYNAMIC",
+    "Server": "cloudflare",
+    "CF-RAY": "a47eb3c3d88619b0-ORD"
+  },
+  "final_url": "https://www.coinspot.com.au/pubapi/v2/latest/BTC",
+  "receipt_utc": "2026-10-09T16:18:38.535006+00:00",
+  "sha256": "2cf3403a1e6f870403ae1751d6ed8ffdc8b0d687e33e8ade0511dde5b0989ea0",
+  "bytes": 75
+}

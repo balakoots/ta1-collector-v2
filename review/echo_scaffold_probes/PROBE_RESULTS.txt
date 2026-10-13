@@ -1,0 +1,26 @@
+# Run against Echo scaffold (collector_fixture.py sha256 5300382460d2769ade3f048f55f147ae9f93c2033797418900574d5e619eb528), 2026-10-13
+# Echo's own suite: 9/9 OK reproduced
+{
+ "D1_backfill_accepted": "CAPTURED",
+ "D2_stale_bytes_accepted": "CAPTURED",
+ "D3_oserror": "UNHANDLED FileExistsError rows=0",
+ "D4_orphan_retry": "UNHANDLED FileExistsError",
+ "D5_truncation_detected": false,
+ "D6_watchdog_current_slot": [
+  "MISSING_SLOT [2] (external watchdog alert required)"
+ ],
+ "D7_row_fields": [
+  "artifact_path",
+  "outcome",
+  "prev_row_sha256",
+  "readback_sha256",
+  "reason",
+  "row_sha256",
+  "slot",
+  "slot_id",
+  "storage_receipt",
+  "writer_run_id",
+  "written_utc"
+ ]
+}
+{"D8_concurrent_trials": 30, "ledger_corrupted_trials": 27}

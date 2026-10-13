@@ -1,0 +1,316 @@
+TA1 collector v2 2.0.0-rc3 — test log
+UTC: 2026-10-12T23:44:48Z
+Host: Linux 6.18.44-fc-v114; git 2.43.0
+Flags: -W error::DeprecationWarning; race defaults 10 trials x 8 processes
+
+=================== Python 3.10.20 ===================
+test_echo_fixture_is_slot1_coinbase_btc (test_01_fixtures_and_regression.Fixtures) ... ok
+test_provenance_hashes (test_01_fixtures_and_regression.Fixtures) ... ok
+test_bit_exact_derived_all_24 (test_01_fixtures_and_regression.Regression14D1)
+Replaying each recorded capture at its recorded time reproduces every frozen 14D.1 figure exactly. ... ok
+test_recorded_http_date_skew_small (test_02_collector.ClockAudit) ... ok
+test_skewed_runner_clock_alerts (test_02_collector.ClockAudit) ... ok
+test_armed_live_transport_still_cannot_reach_network_in_tests (test_02_collector.Governance) ... ok
+test_bad_run_id_refused (test_02_collector.Governance) ... ok
+test_code_freeze_mismatch_refuses (test_02_collector.Governance) ... ok
+test_live_registration_rejects_fixture_transport (test_02_collector.Governance) ... ok
+test_live_transport_disarmed_by_default (test_02_collector.Governance) ... ok
+test_unscheduled_registration_refuses (test_02_collector.Governance) ... ok
+test_capture_valid_persisted_verified_and_pinged (test_02_collector.HappyPathAndIdempotency) ... ok
+test_retry_after_partial_then_exhausted (test_02_collector.HappyPathAndIdempotency) ... ok
+test_second_trigger_same_slot_is_noop (test_02_collector.HappyPathAndIdempotency) ... ok
+test_missed_slot_gets_row_and_cannot_be_captured_later (test_02_collector.NoBackfill) ... ok
+test_outside_window_writes_nothing (test_02_collector.NoBackfill) ... ok
+test_validator_rejects_forged_backfill_row (test_02_collector.NoBackfill) ... ok
+test_bitrot_after_commit_halts_next_run (test_02_collector.PersistenceFaults) ... ok
+test_blank_line_ledger_halts (test_02_collector.PersistenceFaults) ... ok
+test_commit_oserror_leaves_ledger_untouched (test_02_collector.PersistenceFaults) ... ok
+test_crash_between_artifacts_and_ledger_is_recoverable (test_02_collector.PersistenceFaults) ... ok
+test_ledger_tamper_halts (test_02_collector.PersistenceFaults) ... ok
+test_lost_write_detected_by_readback_then_halts (test_02_collector.PersistenceFaults) ... ok
+test_storage_refuses_non_append (test_02_collector.PersistenceFaults) ... ok
+test_all_sources_failed_recorded_not_crash (test_02_collector.SourceFaults) ... ok
+test_truncated_body_and_fx_loss (test_02_collector.SourceFaults) ... ok
+test_duplicate_book_bodies_flagged (test_02_collector.Timing) ... ok
+test_late_start_guard (test_02_collector.Timing) ... ok
+test_receipt_after_slot_end_excluded_but_preserved (test_02_collector.Timing) ... ok
+test_stale_recorded_book_rejected (test_02_collector.Timing)
+Real recorded bytes replayed 10 minutes late: Coinbase server age > 60 s. ... ok
+test_racing_triggers_never_corrupt_or_duplicate (test_03_concurrency_and_git.Concurrency) ... ok
+test_commit_push_readback_and_second_runner_noop (test_03_concurrency_and_git.GitBackendTests) ... ok
+test_missed_rows_and_history_across_runners (test_03_concurrency_and_git.GitBackendTests) ... ok
+test_push_race_loser_aborts_cleanly (test_03_concurrency_and_git.GitBackendTests) ... ok
+test_71_of_72_pass_70_fail (test_04_ledger_watchdog_replay.BurnInAcceptance) ... ok
+test_72_of_72_pass (test_04_ledger_watchdog_replay.BurnInAcceptance) ... ok
+test_any_persistence_incident_fails (test_04_ledger_watchdog_replay.BurnInAcceptance) ... ok
+test_incomplete_window_fails (test_04_ledger_watchdog_replay.BurnInAcceptance) ... ok
+test_injected_miss_excluded_and_must_be_real (test_04_ledger_watchdog_replay.BurnInAcceptance) ... ok
+test_foreign_registration_rejected (test_04_ledger_watchdog_replay.LedgerStrictness) ... ok
+test_non_canonical_rejected (test_04_ledger_watchdog_replay.LedgerStrictness) ... ok
+test_reorder_rejected (test_04_ledger_watchdog_replay.LedgerStrictness) ... ok
+test_torn_write_rejected (test_04_ledger_watchdog_replay.LedgerStrictness) ... ok
+test_truncation_detected_only_with_anchor (test_04_ledger_watchdog_replay.LedgerStrictness) ... ok
+test_valid (test_04_ledger_watchdog_replay.LedgerStrictness) ... ok
+test_ip_sockets_and_dns_blocked (test_04_ledger_watchdog_replay.NetworkGuard) ... ok
+test_counterfactual (test_04_ledger_watchdog_replay.Replay14D1) ... ok
+test_gate_ceiling (test_04_ledger_watchdog_replay.Watchdog) ... ok
+test_no_false_alarm_for_in_progress_slot_or_within_grace (test_04_ledger_watchdog_replay.Watchdog) ... ok
+test_tamper_reported (test_04_ledger_watchdog_replay.Watchdog) ... ok
+test_two_consecutive_and_source_escalation (test_04_ledger_watchdog_replay.Watchdog) ... ok
+test_freeze_matches (test_05_cli_and_registration.CLI) ... ok
+test_run_verify_watchdog_fixture_mode (test_05_cli_and_registration.CLI) ... ok
+test_proposed_registration_is_inert (test_05_cli_and_registration.ProposedRegistration) ... ok
+test_injected_plus_one_organic_never_fails_and_accepts (test_06_burnin_profile.B1InjectedAndOrganic) ... ok
+test_injection_adjacent_organic_is_transparent (test_06_burnin_profile.B1InjectedAndOrganic) ... ok
+test_organic_miss_fully_missed_slot_also_tolerated (test_06_burnin_profile.B1InjectedAndOrganic) ... ok
+test_second_organic_miss_fails_at_the_right_time (test_06_burnin_profile.B1InjectedAndOrganic) ... ok
+test_two_consecutive_counted_misses_across_injection (test_06_burnin_profile.B1InjectedAndOrganic) ... ok
+test_injection_not_performed_is_failing (test_06_burnin_profile.B1InjectionIntegrity) ... ok
+test_injection_without_missed_row_is_failing (test_06_burnin_profile.B1InjectionIntegrity) ... ok
+test_watchdog_and_acceptance_agree_on_random_scenarios (test_06_burnin_profile.B1InjectionIntegrity)
+Property check: final watchdog verdict == acceptance (ledger criteria) on 300 random scenarios. ... ok
+test_rc3_dead_man_config_is_coherent (test_06_burnin_profile.RegistrationValidation)
+B4a/B4b arithmetic, from the shipped registration + workflow, not from prose. ... ok
+test_rejections (test_06_burnin_profile.RegistrationValidation) ... ok
+test_shipped_proposed_registration_is_burnin (test_06_burnin_profile.RegistrationValidation) ... ok
+test_valid (test_06_burnin_profile.RegistrationValidation) ... ok
+test_study_profile_keeps_rc1_semantics (test_06_burnin_profile.StudyProfileUnchanged) ... ok
+
+----------------------------------------------------------------------
+Ran 67 tests in 25.970s
+
+OK
+
+=================== Python 3.11.17 ===================
+test_echo_fixture_is_slot1_coinbase_btc (test_01_fixtures_and_regression.Fixtures.test_echo_fixture_is_slot1_coinbase_btc) ... ok
+test_provenance_hashes (test_01_fixtures_and_regression.Fixtures.test_provenance_hashes) ... ok
+test_bit_exact_derived_all_24 (test_01_fixtures_and_regression.Regression14D1.test_bit_exact_derived_all_24)
+Replaying each recorded capture at its recorded time reproduces every frozen 14D.1 figure exactly. ... ok
+test_recorded_http_date_skew_small (test_02_collector.ClockAudit.test_recorded_http_date_skew_small) ... ok
+test_skewed_runner_clock_alerts (test_02_collector.ClockAudit.test_skewed_runner_clock_alerts) ... ok
+test_armed_live_transport_still_cannot_reach_network_in_tests (test_02_collector.Governance.test_armed_live_transport_still_cannot_reach_network_in_tests) ... ok
+test_bad_run_id_refused (test_02_collector.Governance.test_bad_run_id_refused) ... ok
+test_code_freeze_mismatch_refuses (test_02_collector.Governance.test_code_freeze_mismatch_refuses) ... ok
+test_live_registration_rejects_fixture_transport (test_02_collector.Governance.test_live_registration_rejects_fixture_transport) ... ok
+test_live_transport_disarmed_by_default (test_02_collector.Governance.test_live_transport_disarmed_by_default) ... ok
+test_unscheduled_registration_refuses (test_02_collector.Governance.test_unscheduled_registration_refuses) ... ok
+test_capture_valid_persisted_verified_and_pinged (test_02_collector.HappyPathAndIdempotency.test_capture_valid_persisted_verified_and_pinged) ... ok
+test_retry_after_partial_then_exhausted (test_02_collector.HappyPathAndIdempotency.test_retry_after_partial_then_exhausted) ... ok
+test_second_trigger_same_slot_is_noop (test_02_collector.HappyPathAndIdempotency.test_second_trigger_same_slot_is_noop) ... ok
+test_missed_slot_gets_row_and_cannot_be_captured_later (test_02_collector.NoBackfill.test_missed_slot_gets_row_and_cannot_be_captured_later) ... ok
+test_outside_window_writes_nothing (test_02_collector.NoBackfill.test_outside_window_writes_nothing) ... ok
+test_validator_rejects_forged_backfill_row (test_02_collector.NoBackfill.test_validator_rejects_forged_backfill_row) ... ok
+test_bitrot_after_commit_halts_next_run (test_02_collector.PersistenceFaults.test_bitrot_after_commit_halts_next_run) ... ok
+test_blank_line_ledger_halts (test_02_collector.PersistenceFaults.test_blank_line_ledger_halts) ... ok
+test_commit_oserror_leaves_ledger_untouched (test_02_collector.PersistenceFaults.test_commit_oserror_leaves_ledger_untouched) ... ok
+test_crash_between_artifacts_and_ledger_is_recoverable (test_02_collector.PersistenceFaults.test_crash_between_artifacts_and_ledger_is_recoverable) ... ok
+test_ledger_tamper_halts (test_02_collector.PersistenceFaults.test_ledger_tamper_halts) ... ok
+test_lost_write_detected_by_readback_then_halts (test_02_collector.PersistenceFaults.test_lost_write_detected_by_readback_then_halts) ... ok
+test_storage_refuses_non_append (test_02_collector.PersistenceFaults.test_storage_refuses_non_append) ... ok
+test_all_sources_failed_recorded_not_crash (test_02_collector.SourceFaults.test_all_sources_failed_recorded_not_crash) ... ok
+test_truncated_body_and_fx_loss (test_02_collector.SourceFaults.test_truncated_body_and_fx_loss) ... ok
+test_duplicate_book_bodies_flagged (test_02_collector.Timing.test_duplicate_book_bodies_flagged) ... ok
+test_late_start_guard (test_02_collector.Timing.test_late_start_guard) ... ok
+test_receipt_after_slot_end_excluded_but_preserved (test_02_collector.Timing.test_receipt_after_slot_end_excluded_but_preserved) ... ok
+test_stale_recorded_book_rejected (test_02_collector.Timing.test_stale_recorded_book_rejected)
+Real recorded bytes replayed 10 minutes late: Coinbase server age > 60 s. ... ok
+test_racing_triggers_never_corrupt_or_duplicate (test_03_concurrency_and_git.Concurrency.test_racing_triggers_never_corrupt_or_duplicate) ... ok
+test_commit_push_readback_and_second_runner_noop (test_03_concurrency_and_git.GitBackendTests.test_commit_push_readback_and_second_runner_noop) ... ok
+test_missed_rows_and_history_across_runners (test_03_concurrency_and_git.GitBackendTests.test_missed_rows_and_history_across_runners) ... ok
+test_push_race_loser_aborts_cleanly (test_03_concurrency_and_git.GitBackendTests.test_push_race_loser_aborts_cleanly) ... ok
+test_71_of_72_pass_70_fail (test_04_ledger_watchdog_replay.BurnInAcceptance.test_71_of_72_pass_70_fail) ... ok
+test_72_of_72_pass (test_04_ledger_watchdog_replay.BurnInAcceptance.test_72_of_72_pass) ... ok
+test_any_persistence_incident_fails (test_04_ledger_watchdog_replay.BurnInAcceptance.test_any_persistence_incident_fails) ... ok
+test_incomplete_window_fails (test_04_ledger_watchdog_replay.BurnInAcceptance.test_incomplete_window_fails) ... ok
+test_injected_miss_excluded_and_must_be_real (test_04_ledger_watchdog_replay.BurnInAcceptance.test_injected_miss_excluded_and_must_be_real) ... ok
+test_foreign_registration_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_foreign_registration_rejected) ... ok
+test_non_canonical_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_non_canonical_rejected) ... ok
+test_reorder_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_reorder_rejected) ... ok
+test_torn_write_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_torn_write_rejected) ... ok
+test_truncation_detected_only_with_anchor (test_04_ledger_watchdog_replay.LedgerStrictness.test_truncation_detected_only_with_anchor) ... ok
+test_valid (test_04_ledger_watchdog_replay.LedgerStrictness.test_valid) ... ok
+test_ip_sockets_and_dns_blocked (test_04_ledger_watchdog_replay.NetworkGuard.test_ip_sockets_and_dns_blocked) ... ok
+test_counterfactual (test_04_ledger_watchdog_replay.Replay14D1.test_counterfactual) ... ok
+test_gate_ceiling (test_04_ledger_watchdog_replay.Watchdog.test_gate_ceiling) ... ok
+test_no_false_alarm_for_in_progress_slot_or_within_grace (test_04_ledger_watchdog_replay.Watchdog.test_no_false_alarm_for_in_progress_slot_or_within_grace) ... ok
+test_tamper_reported (test_04_ledger_watchdog_replay.Watchdog.test_tamper_reported) ... ok
+test_two_consecutive_and_source_escalation (test_04_ledger_watchdog_replay.Watchdog.test_two_consecutive_and_source_escalation) ... ok
+test_freeze_matches (test_05_cli_and_registration.CLI.test_freeze_matches) ... ok
+test_run_verify_watchdog_fixture_mode (test_05_cli_and_registration.CLI.test_run_verify_watchdog_fixture_mode) ... ok
+test_proposed_registration_is_inert (test_05_cli_and_registration.ProposedRegistration.test_proposed_registration_is_inert) ... ok
+test_injected_plus_one_organic_never_fails_and_accepts (test_06_burnin_profile.B1InjectedAndOrganic.test_injected_plus_one_organic_never_fails_and_accepts) ... ok
+test_injection_adjacent_organic_is_transparent (test_06_burnin_profile.B1InjectedAndOrganic.test_injection_adjacent_organic_is_transparent) ... ok
+test_organic_miss_fully_missed_slot_also_tolerated (test_06_burnin_profile.B1InjectedAndOrganic.test_organic_miss_fully_missed_slot_also_tolerated) ... ok
+test_second_organic_miss_fails_at_the_right_time (test_06_burnin_profile.B1InjectedAndOrganic.test_second_organic_miss_fails_at_the_right_time) ... ok
+test_two_consecutive_counted_misses_across_injection (test_06_burnin_profile.B1InjectedAndOrganic.test_two_consecutive_counted_misses_across_injection) ... ok
+test_injection_not_performed_is_failing (test_06_burnin_profile.B1InjectionIntegrity.test_injection_not_performed_is_failing) ... ok
+test_injection_without_missed_row_is_failing (test_06_burnin_profile.B1InjectionIntegrity.test_injection_without_missed_row_is_failing) ... ok
+test_watchdog_and_acceptance_agree_on_random_scenarios (test_06_burnin_profile.B1InjectionIntegrity.test_watchdog_and_acceptance_agree_on_random_scenarios)
+Property check: final watchdog verdict == acceptance (ledger criteria) on 300 random scenarios. ... ok
+test_rc3_dead_man_config_is_coherent (test_06_burnin_profile.RegistrationValidation.test_rc3_dead_man_config_is_coherent)
+B4a/B4b arithmetic, from the shipped registration + workflow, not from prose. ... ok
+test_rejections (test_06_burnin_profile.RegistrationValidation.test_rejections) ... ok
+test_shipped_proposed_registration_is_burnin (test_06_burnin_profile.RegistrationValidation.test_shipped_proposed_registration_is_burnin) ... ok
+test_valid (test_06_burnin_profile.RegistrationValidation.test_valid) ... ok
+test_study_profile_keeps_rc1_semantics (test_06_burnin_profile.StudyProfileUnchanged.test_study_profile_keeps_rc1_semantics) ... ok
+
+----------------------------------------------------------------------
+Ran 67 tests in 25.377s
+
+OK
+
+=================== Python 3.12.3 ===================
+test_echo_fixture_is_slot1_coinbase_btc (test_01_fixtures_and_regression.Fixtures.test_echo_fixture_is_slot1_coinbase_btc) ... ok
+test_provenance_hashes (test_01_fixtures_and_regression.Fixtures.test_provenance_hashes) ... ok
+test_bit_exact_derived_all_24 (test_01_fixtures_and_regression.Regression14D1.test_bit_exact_derived_all_24)
+Replaying each recorded capture at its recorded time reproduces every frozen 14D.1 figure exactly. ... ok
+test_recorded_http_date_skew_small (test_02_collector.ClockAudit.test_recorded_http_date_skew_small) ... ok
+test_skewed_runner_clock_alerts (test_02_collector.ClockAudit.test_skewed_runner_clock_alerts) ... ok
+test_armed_live_transport_still_cannot_reach_network_in_tests (test_02_collector.Governance.test_armed_live_transport_still_cannot_reach_network_in_tests) ... ok
+test_bad_run_id_refused (test_02_collector.Governance.test_bad_run_id_refused) ... ok
+test_code_freeze_mismatch_refuses (test_02_collector.Governance.test_code_freeze_mismatch_refuses) ... ok
+test_live_registration_rejects_fixture_transport (test_02_collector.Governance.test_live_registration_rejects_fixture_transport) ... ok
+test_live_transport_disarmed_by_default (test_02_collector.Governance.test_live_transport_disarmed_by_default) ... ok
+test_unscheduled_registration_refuses (test_02_collector.Governance.test_unscheduled_registration_refuses) ... ok
+test_capture_valid_persisted_verified_and_pinged (test_02_collector.HappyPathAndIdempotency.test_capture_valid_persisted_verified_and_pinged) ... ok
+test_retry_after_partial_then_exhausted (test_02_collector.HappyPathAndIdempotency.test_retry_after_partial_then_exhausted) ... ok
+test_second_trigger_same_slot_is_noop (test_02_collector.HappyPathAndIdempotency.test_second_trigger_same_slot_is_noop) ... ok
+test_missed_slot_gets_row_and_cannot_be_captured_later (test_02_collector.NoBackfill.test_missed_slot_gets_row_and_cannot_be_captured_later) ... ok
+test_outside_window_writes_nothing (test_02_collector.NoBackfill.test_outside_window_writes_nothing) ... ok
+test_validator_rejects_forged_backfill_row (test_02_collector.NoBackfill.test_validator_rejects_forged_backfill_row) ... ok
+test_bitrot_after_commit_halts_next_run (test_02_collector.PersistenceFaults.test_bitrot_after_commit_halts_next_run) ... ok
+test_blank_line_ledger_halts (test_02_collector.PersistenceFaults.test_blank_line_ledger_halts) ... ok
+test_commit_oserror_leaves_ledger_untouched (test_02_collector.PersistenceFaults.test_commit_oserror_leaves_ledger_untouched) ... ok
+test_crash_between_artifacts_and_ledger_is_recoverable (test_02_collector.PersistenceFaults.test_crash_between_artifacts_and_ledger_is_recoverable) ... ok
+test_ledger_tamper_halts (test_02_collector.PersistenceFaults.test_ledger_tamper_halts) ... ok
+test_lost_write_detected_by_readback_then_halts (test_02_collector.PersistenceFaults.test_lost_write_detected_by_readback_then_halts) ... ok
+test_storage_refuses_non_append (test_02_collector.PersistenceFaults.test_storage_refuses_non_append) ... ok
+test_all_sources_failed_recorded_not_crash (test_02_collector.SourceFaults.test_all_sources_failed_recorded_not_crash) ... ok
+test_truncated_body_and_fx_loss (test_02_collector.SourceFaults.test_truncated_body_and_fx_loss) ... ok
+test_duplicate_book_bodies_flagged (test_02_collector.Timing.test_duplicate_book_bodies_flagged) ... ok
+test_late_start_guard (test_02_collector.Timing.test_late_start_guard) ... ok
+test_receipt_after_slot_end_excluded_but_preserved (test_02_collector.Timing.test_receipt_after_slot_end_excluded_but_preserved) ... ok
+test_stale_recorded_book_rejected (test_02_collector.Timing.test_stale_recorded_book_rejected)
+Real recorded bytes replayed 10 minutes late: Coinbase server age > 60 s. ... ok
+test_racing_triggers_never_corrupt_or_duplicate (test_03_concurrency_and_git.Concurrency.test_racing_triggers_never_corrupt_or_duplicate) ... ok
+test_commit_push_readback_and_second_runner_noop (test_03_concurrency_and_git.GitBackendTests.test_commit_push_readback_and_second_runner_noop) ... ok
+test_missed_rows_and_history_across_runners (test_03_concurrency_and_git.GitBackendTests.test_missed_rows_and_history_across_runners) ... ok
+test_push_race_loser_aborts_cleanly (test_03_concurrency_and_git.GitBackendTests.test_push_race_loser_aborts_cleanly) ... ok
+test_71_of_72_pass_70_fail (test_04_ledger_watchdog_replay.BurnInAcceptance.test_71_of_72_pass_70_fail) ... ok
+test_72_of_72_pass (test_04_ledger_watchdog_replay.BurnInAcceptance.test_72_of_72_pass) ... ok
+test_any_persistence_incident_fails (test_04_ledger_watchdog_replay.BurnInAcceptance.test_any_persistence_incident_fails) ... ok
+test_incomplete_window_fails (test_04_ledger_watchdog_replay.BurnInAcceptance.test_incomplete_window_fails) ... ok
+test_injected_miss_excluded_and_must_be_real (test_04_ledger_watchdog_replay.BurnInAcceptance.test_injected_miss_excluded_and_must_be_real) ... ok
+test_foreign_registration_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_foreign_registration_rejected) ... ok
+test_non_canonical_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_non_canonical_rejected) ... ok
+test_reorder_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_reorder_rejected) ... ok
+test_torn_write_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_torn_write_rejected) ... ok
+test_truncation_detected_only_with_anchor (test_04_ledger_watchdog_replay.LedgerStrictness.test_truncation_detected_only_with_anchor) ... ok
+test_valid (test_04_ledger_watchdog_replay.LedgerStrictness.test_valid) ... ok
+test_ip_sockets_and_dns_blocked (test_04_ledger_watchdog_replay.NetworkGuard.test_ip_sockets_and_dns_blocked) ... ok
+test_counterfactual (test_04_ledger_watchdog_replay.Replay14D1.test_counterfactual) ... ok
+test_gate_ceiling (test_04_ledger_watchdog_replay.Watchdog.test_gate_ceiling) ... ok
+test_no_false_alarm_for_in_progress_slot_or_within_grace (test_04_ledger_watchdog_replay.Watchdog.test_no_false_alarm_for_in_progress_slot_or_within_grace) ... ok
+test_tamper_reported (test_04_ledger_watchdog_replay.Watchdog.test_tamper_reported) ... ok
+test_two_consecutive_and_source_escalation (test_04_ledger_watchdog_replay.Watchdog.test_two_consecutive_and_source_escalation) ... ok
+test_freeze_matches (test_05_cli_and_registration.CLI.test_freeze_matches) ... ok
+test_run_verify_watchdog_fixture_mode (test_05_cli_and_registration.CLI.test_run_verify_watchdog_fixture_mode) ... ok
+test_proposed_registration_is_inert (test_05_cli_and_registration.ProposedRegistration.test_proposed_registration_is_inert) ... ok
+test_injected_plus_one_organic_never_fails_and_accepts (test_06_burnin_profile.B1InjectedAndOrganic.test_injected_plus_one_organic_never_fails_and_accepts) ... ok
+test_injection_adjacent_organic_is_transparent (test_06_burnin_profile.B1InjectedAndOrganic.test_injection_adjacent_organic_is_transparent) ... ok
+test_organic_miss_fully_missed_slot_also_tolerated (test_06_burnin_profile.B1InjectedAndOrganic.test_organic_miss_fully_missed_slot_also_tolerated) ... ok
+test_second_organic_miss_fails_at_the_right_time (test_06_burnin_profile.B1InjectedAndOrganic.test_second_organic_miss_fails_at_the_right_time) ... ok
+test_two_consecutive_counted_misses_across_injection (test_06_burnin_profile.B1InjectedAndOrganic.test_two_consecutive_counted_misses_across_injection) ... ok
+test_injection_not_performed_is_failing (test_06_burnin_profile.B1InjectionIntegrity.test_injection_not_performed_is_failing) ... ok
+test_injection_without_missed_row_is_failing (test_06_burnin_profile.B1InjectionIntegrity.test_injection_without_missed_row_is_failing) ... ok
+test_watchdog_and_acceptance_agree_on_random_scenarios (test_06_burnin_profile.B1InjectionIntegrity.test_watchdog_and_acceptance_agree_on_random_scenarios)
+Property check: final watchdog verdict == acceptance (ledger criteria) on 300 random scenarios. ... ok
+test_rc3_dead_man_config_is_coherent (test_06_burnin_profile.RegistrationValidation.test_rc3_dead_man_config_is_coherent)
+B4a/B4b arithmetic, from the shipped registration + workflow, not from prose. ... ok
+test_rejections (test_06_burnin_profile.RegistrationValidation.test_rejections) ... ok
+test_shipped_proposed_registration_is_burnin (test_06_burnin_profile.RegistrationValidation.test_shipped_proposed_registration_is_burnin) ... ok
+test_valid (test_06_burnin_profile.RegistrationValidation.test_valid) ... ok
+test_study_profile_keeps_rc1_semantics (test_06_burnin_profile.StudyProfileUnchanged.test_study_profile_keeps_rc1_semantics) ... ok
+
+----------------------------------------------------------------------
+Ran 67 tests in 25.811s
+
+OK
+
+=================== Python 3.13.16 ===================
+test_echo_fixture_is_slot1_coinbase_btc (test_01_fixtures_and_regression.Fixtures.test_echo_fixture_is_slot1_coinbase_btc) ... ok
+test_provenance_hashes (test_01_fixtures_and_regression.Fixtures.test_provenance_hashes) ... ok
+test_bit_exact_derived_all_24 (test_01_fixtures_and_regression.Regression14D1.test_bit_exact_derived_all_24)
+Replaying each recorded capture at its recorded time reproduces every frozen 14D.1 figure exactly. ... ok
+test_recorded_http_date_skew_small (test_02_collector.ClockAudit.test_recorded_http_date_skew_small) ... ok
+test_skewed_runner_clock_alerts (test_02_collector.ClockAudit.test_skewed_runner_clock_alerts) ... ok
+test_armed_live_transport_still_cannot_reach_network_in_tests (test_02_collector.Governance.test_armed_live_transport_still_cannot_reach_network_in_tests) ... ok
+test_bad_run_id_refused (test_02_collector.Governance.test_bad_run_id_refused) ... ok
+test_code_freeze_mismatch_refuses (test_02_collector.Governance.test_code_freeze_mismatch_refuses) ... ok
+test_live_registration_rejects_fixture_transport (test_02_collector.Governance.test_live_registration_rejects_fixture_transport) ... ok
+test_live_transport_disarmed_by_default (test_02_collector.Governance.test_live_transport_disarmed_by_default) ... ok
+test_unscheduled_registration_refuses (test_02_collector.Governance.test_unscheduled_registration_refuses) ... ok
+test_capture_valid_persisted_verified_and_pinged (test_02_collector.HappyPathAndIdempotency.test_capture_valid_persisted_verified_and_pinged) ... ok
+test_retry_after_partial_then_exhausted (test_02_collector.HappyPathAndIdempotency.test_retry_after_partial_then_exhausted) ... ok
+test_second_trigger_same_slot_is_noop (test_02_collector.HappyPathAndIdempotency.test_second_trigger_same_slot_is_noop) ... ok
+test_missed_slot_gets_row_and_cannot_be_captured_later (test_02_collector.NoBackfill.test_missed_slot_gets_row_and_cannot_be_captured_later) ... ok
+test_outside_window_writes_nothing (test_02_collector.NoBackfill.test_outside_window_writes_nothing) ... ok
+test_validator_rejects_forged_backfill_row (test_02_collector.NoBackfill.test_validator_rejects_forged_backfill_row) ... ok
+test_bitrot_after_commit_halts_next_run (test_02_collector.PersistenceFaults.test_bitrot_after_commit_halts_next_run) ... ok
+test_blank_line_ledger_halts (test_02_collector.PersistenceFaults.test_blank_line_ledger_halts) ... ok
+test_commit_oserror_leaves_ledger_untouched (test_02_collector.PersistenceFaults.test_commit_oserror_leaves_ledger_untouched) ... ok
+test_crash_between_artifacts_and_ledger_is_recoverable (test_02_collector.PersistenceFaults.test_crash_between_artifacts_and_ledger_is_recoverable) ... ok
+test_ledger_tamper_halts (test_02_collector.PersistenceFaults.test_ledger_tamper_halts) ... ok
+test_lost_write_detected_by_readback_then_halts (test_02_collector.PersistenceFaults.test_lost_write_detected_by_readback_then_halts) ... ok
+test_storage_refuses_non_append (test_02_collector.PersistenceFaults.test_storage_refuses_non_append) ... ok
+test_all_sources_failed_recorded_not_crash (test_02_collector.SourceFaults.test_all_sources_failed_recorded_not_crash) ... ok
+test_truncated_body_and_fx_loss (test_02_collector.SourceFaults.test_truncated_body_and_fx_loss) ... ok
+test_duplicate_book_bodies_flagged (test_02_collector.Timing.test_duplicate_book_bodies_flagged) ... ok
+test_late_start_guard (test_02_collector.Timing.test_late_start_guard) ... ok
+test_receipt_after_slot_end_excluded_but_preserved (test_02_collector.Timing.test_receipt_after_slot_end_excluded_but_preserved) ... ok
+test_stale_recorded_book_rejected (test_02_collector.Timing.test_stale_recorded_book_rejected)
+Real recorded bytes replayed 10 minutes late: Coinbase server age > 60 s. ... ok
+test_racing_triggers_never_corrupt_or_duplicate (test_03_concurrency_and_git.Concurrency.test_racing_triggers_never_corrupt_or_duplicate) ... ok
+test_commit_push_readback_and_second_runner_noop (test_03_concurrency_and_git.GitBackendTests.test_commit_push_readback_and_second_runner_noop) ... ok
+test_missed_rows_and_history_across_runners (test_03_concurrency_and_git.GitBackendTests.test_missed_rows_and_history_across_runners) ... ok
+test_push_race_loser_aborts_cleanly (test_03_concurrency_and_git.GitBackendTests.test_push_race_loser_aborts_cleanly) ... ok
+test_71_of_72_pass_70_fail (test_04_ledger_watchdog_replay.BurnInAcceptance.test_71_of_72_pass_70_fail) ... ok
+test_72_of_72_pass (test_04_ledger_watchdog_replay.BurnInAcceptance.test_72_of_72_pass) ... ok
+test_any_persistence_incident_fails (test_04_ledger_watchdog_replay.BurnInAcceptance.test_any_persistence_incident_fails) ... ok
+test_incomplete_window_fails (test_04_ledger_watchdog_replay.BurnInAcceptance.test_incomplete_window_fails) ... ok
+test_injected_miss_excluded_and_must_be_real (test_04_ledger_watchdog_replay.BurnInAcceptance.test_injected_miss_excluded_and_must_be_real) ... ok
+test_foreign_registration_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_foreign_registration_rejected) ... ok
+test_non_canonical_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_non_canonical_rejected) ... ok
+test_reorder_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_reorder_rejected) ... ok
+test_torn_write_rejected (test_04_ledger_watchdog_replay.LedgerStrictness.test_torn_write_rejected) ... ok
+test_truncation_detected_only_with_anchor (test_04_ledger_watchdog_replay.LedgerStrictness.test_truncation_detected_only_with_anchor) ... ok
+test_valid (test_04_ledger_watchdog_replay.LedgerStrictness.test_valid) ... ok
+test_ip_sockets_and_dns_blocked (test_04_ledger_watchdog_replay.NetworkGuard.test_ip_sockets_and_dns_blocked) ... ok
+test_counterfactual (test_04_ledger_watchdog_replay.Replay14D1.test_counterfactual) ... ok
+test_gate_ceiling (test_04_ledger_watchdog_replay.Watchdog.test_gate_ceiling) ... ok
+test_no_false_alarm_for_in_progress_slot_or_within_grace (test_04_ledger_watchdog_replay.Watchdog.test_no_false_alarm_for_in_progress_slot_or_within_grace) ... ok
+test_tamper_reported (test_04_ledger_watchdog_replay.Watchdog.test_tamper_reported) ... ok
+test_two_consecutive_and_source_escalation (test_04_ledger_watchdog_replay.Watchdog.test_two_consecutive_and_source_escalation) ... ok
+test_freeze_matches (test_05_cli_and_registration.CLI.test_freeze_matches) ... ok
+test_run_verify_watchdog_fixture_mode (test_05_cli_and_registration.CLI.test_run_verify_watchdog_fixture_mode) ... ok
+test_proposed_registration_is_inert (test_05_cli_and_registration.ProposedRegistration.test_proposed_registration_is_inert) ... ok
+test_injected_plus_one_organic_never_fails_and_accepts (test_06_burnin_profile.B1InjectedAndOrganic.test_injected_plus_one_organic_never_fails_and_accepts) ... ok
+test_injection_adjacent_organic_is_transparent (test_06_burnin_profile.B1InjectedAndOrganic.test_injection_adjacent_organic_is_transparent) ... ok
+test_organic_miss_fully_missed_slot_also_tolerated (test_06_burnin_profile.B1InjectedAndOrganic.test_organic_miss_fully_missed_slot_also_tolerated) ... ok
+test_second_organic_miss_fails_at_the_right_time (test_06_burnin_profile.B1InjectedAndOrganic.test_second_organic_miss_fails_at_the_right_time) ... ok
+test_two_consecutive_counted_misses_across_injection (test_06_burnin_profile.B1InjectedAndOrganic.test_two_consecutive_counted_misses_across_injection) ... ok
+test_injection_not_performed_is_failing (test_06_burnin_profile.B1InjectionIntegrity.test_injection_not_performed_is_failing) ... ok
+test_injection_without_missed_row_is_failing (test_06_burnin_profile.B1InjectionIntegrity.test_injection_without_missed_row_is_failing) ... ok
+test_watchdog_and_acceptance_agree_on_random_scenarios (test_06_burnin_profile.B1InjectionIntegrity.test_watchdog_and_acceptance_agree_on_random_scenarios)
+Property check: final watchdog verdict == acceptance (ledger criteria) on 300 random scenarios. ... ok
+test_rc3_dead_man_config_is_coherent (test_06_burnin_profile.RegistrationValidation.test_rc3_dead_man_config_is_coherent)
+B4a/B4b arithmetic, from the shipped registration + workflow, not from prose. ... ok
+test_rejections (test_06_burnin_profile.RegistrationValidation.test_rejections) ... ok
+test_shipped_proposed_registration_is_burnin (test_06_burnin_profile.RegistrationValidation.test_shipped_proposed_registration_is_burnin) ... ok
+test_valid (test_06_burnin_profile.RegistrationValidation.test_valid) ... ok
+test_study_profile_keeps_rc1_semantics (test_06_burnin_profile.StudyProfileUnchanged.test_study_profile_keeps_rc1_semantics) ... ok
+
+----------------------------------------------------------------------
+Ran 67 tests in 25.061s
+
+OK

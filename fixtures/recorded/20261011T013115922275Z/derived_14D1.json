@@ -1,0 +1,207 @@
+{
+  "registration": {
+    "protocol_sha256": "1452ae8cd2c5c11e3ecd91b3b1d335ea9a9961df9dfe93c0f6e4b15bdb8ab3e8",
+    "code_sha256": "f83e610c3e90064a0976ed3b2247ef05b000d1450297ff710816bfdd027536f8",
+    "capture_utc": "2026-10-11T01:31:15.922482+00:00"
+  },
+  "fx": {
+    "status": "daily indicative sizing only",
+    "publication_date": "2026-10-09",
+    "usd_per_aud": 0.6981061549962622,
+    "USDC_parity": "assumed unverified"
+  },
+  "markets": {
+    "coinbase_BTC": {
+      "status": "valid displayed depth; hypothetical liquidity only",
+      "http_status": 200,
+      "server_time": "2026-10-11T01:31:20.744460Z",
+      "server_age_seconds": 0.419638,
+      "bid": 82951.23,
+      "ask": 82952.88,
+      "sizes": {
+        "500": {
+          "base_bought": 0.004207847605750771,
+          "sale_proceeds": 349.04613454958155,
+          "liquidity_loss_bps": 0.19890810301075823,
+          "budget_quote": 349.0530774981311,
+          "approx_fee_scenarios_bps": {
+            "0.001": 20.19890810301076,
+            "0.004": 80.19890810301075,
+            "0.006": 120.19890810301075
+          },
+          "fee_status": "hypothetical account scenarios"
+        },
+        "1000": {
+          "base_bought": 0.008415654923047683,
+          "sale_proceeds": 698.0889271223606,
+          "liquidity_loss_bps": 0.246780146232248,
+          "budget_quote": 698.1061549962621,
+          "approx_fee_scenarios_bps": {
+            "0.001": 20.246780146232247,
+            "0.004": 80.24678014623225,
+            "0.006": 120.24678014623225
+          },
+          "fee_status": "hypothetical account scenarios"
+        },
+        "2500": {
+          "base_bought": 0.02103905621702554,
+          "sale_proceeds": 1745.2155912414155,
+          "liquidity_loss_bps": 0.2853219321079092,
+          "budget_quote": 1745.2653874906555,
+          "approx_fee_scenarios_bps": {
+            "0.001": 20.28532193210791,
+            "0.004": 80.2853219321079,
+            "0.006": 120.2853219321079
+          },
+          "fee_status": "hypothetical account scenarios"
+        }
+      }
+    },
+    "coinspot_depth_BTC": {
+      "status": "valid displayed depth; hypothetical liquidity only",
+      "http_status": 200,
+      "freshness": "server time unavailable; receipt time only",
+      "bid": 119000.0,
+      "ask": 119170.6898,
+      "sizes": {
+        "500": {
+          "base_bought": 0.004195662547889356,
+          "sale_proceeds": 499.2838431988333,
+          "liquidity_loss_bps": 14.323136023333518,
+          "budget_quote": 500,
+          "approx_fee_scenarios_bps": {
+            "0.001": 34.32313602333352
+          },
+          "fee_status": "Markets public fee; no observed fill"
+        },
+        "1000": {
+          "base_bought": 0.008391325095778711,
+          "sale_proceeds": 998.4924756496422,
+          "liquidity_loss_bps": 15.075243503578122,
+          "budget_quote": 1000,
+          "approx_fee_scenarios_bps": {
+            "0.001": 35.07524350357812
+          },
+          "fee_status": "Markets public fee; no observed fill"
+        },
+        "2500": {
+          "base_bought": 0.020978312739446777,
+          "sale_proceeds": 2495.5194316856055,
+          "liquidity_loss_bps": 17.922273257578127,
+          "budget_quote": 2500,
+          "approx_fee_scenarios_bps": {
+            "0.001": 37.92227325757813
+          },
+          "fee_status": "Markets public fee; no observed fill"
+        }
+      }
+    },
+    "coinspot_quote_BTC": {
+      "status": "indicative quote; product-fee mapping unresolved",
+      "http_status": 200,
+      "bid": 119000.0,
+      "ask": 119166.97,
+      "quote_loss_bps": 14.011432866003481
+    },
+    "coinbase_ETH": {
+      "status": "valid displayed depth; hypothetical liquidity only",
+      "http_status": 200,
+      "server_time": "2026-10-11T01:31:21.020368Z",
+      "server_age_seconds": 0.21004,
+      "bid": 2507.72,
+      "ask": 2507.73,
+      "sizes": {
+        "500": {
+          "base_bought": 0.13919085288214084,
+          "sale_proceeds": 349.02888240485464,
+          "liquidity_loss_bps": 0.693163728847573,
+          "budget_quote": 349.0530774981311,
+          "approx_fee_scenarios_bps": {
+            "0.001": 20.693163728847573,
+            "0.004": 80.69316372884758,
+            "0.006": 120.69316372884758
+          },
+          "fee_status": "hypothetical account scenarios"
+        },
+        "1000": {
+          "base_bought": 0.2783817057642817,
+          "sale_proceeds": 698.0541217324092,
+          "liquidity_loss_bps": 0.7453488768233162,
+          "budget_quote": 698.1061549962621,
+          "approx_fee_scenarios_bps": {
+            "0.001": 20.745348876823318,
+            "0.004": 80.74534887682331,
+            "0.006": 120.74534887682331
+          },
+          "fee_status": "hypothetical account scenarios"
+        },
+        "2500": {
+          "base_bought": 0.6959542644107043,
+          "sale_proceeds": 1745.1298397150736,
+          "liquidity_loss_bps": 0.7766599656045279,
+          "budget_quote": 1745.2653874906555,
+          "approx_fee_scenarios_bps": {
+            "0.001": 20.776659965604527,
+            "0.004": 80.77665996560452,
+            "0.006": 120.77665996560452
+          },
+          "fee_status": "hypothetical account scenarios"
+        }
+      }
+    },
+    "coinspot_depth_ETH": {
+      "status": "valid displayed depth; hypothetical liquidity only",
+      "http_status": 200,
+      "freshness": "server time unavailable; receipt time only",
+      "bid": 3586.98343332,
+      "ask": 3607.0896365,
+      "sizes": {
+        "500": {
+          "base_bought": 0.13861590655816242,
+          "sale_proceeds": 497.2129604187617,
+          "liquidity_loss_bps": 55.74079162476551,
+          "budget_quote": 500,
+          "approx_fee_scenarios_bps": {
+            "0.001": 75.7407916247655
+          },
+          "fee_status": "Markets public fee; no observed fill"
+        },
+        "1000": {
+          "base_bought": 0.27723181311632483,
+          "sale_proceeds": 994.4259208375234,
+          "liquidity_loss_bps": 55.74079162476551,
+          "budget_quote": 1000,
+          "approx_fee_scenarios_bps": {
+            "0.001": 75.7407916247655
+          },
+          "fee_status": "Markets public fee; no observed fill"
+        },
+        "2500": {
+          "base_bought": 0.693079532790812,
+          "sale_proceeds": 2486.0648020938083,
+          "liquidity_loss_bps": 55.74079162476664,
+          "budget_quote": 2500,
+          "approx_fee_scenarios_bps": {
+            "0.001": 75.74079162476664
+          },
+          "fee_status": "Markets public fee; no observed fill"
+        }
+      }
+    },
+    "coinspot_quote_ETH": {
+      "status": "indicative quote; product-fee mapping unresolved",
+      "http_status": 200,
+      "bid": 3587.83,
+      "ask": 3607.1,
+      "quote_loss_bps": 53.42241690000304
+    }
+  },
+  "unknowns": [
+    "account fees",
+    "AUD-USDC executable conversion",
+    "latency fills",
+    "USDC-USD basis",
+    "account eligibility"
+  ],
+  "kind": "scheduled-window"
+}
