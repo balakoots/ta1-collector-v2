@@ -1,0 +1,27 @@
+{
+  "bytes": 1547,
+  "error": null,
+  "headers": {
+    "Connection": "close",
+    "Content-Disposition": "attachment;",
+    "Content-Type": "text/xml",
+    "Date": "Wed, 14 Oct 2026 18:07:56 GMT",
+    "Expires": "Wed, 14 Oct 2026 14:02:30 GMT",
+    "Last-Modified": "Wed, 14 Oct 2026 13:56:46 GMT",
+    "Server": "myracloud",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains",
+    "Transfer-Encoding": "chunked",
+    "Upgrade": "h2",
+    "X-CDN": "1",
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-XSS-Protection": "1; mode=block",
+    "cache-control": "max-age=300"
+  },
+  "provenance": {},
+  "receipt_utc": "2026-10-14T18:07:57.059298Z",
+  "request_utc": "2026-10-14T18:07:56.348355Z",
+  "sha256": "56546f4095862fcb4da116f6523b6027a87d914ce863bf5512edb808450c0d2e",
+  "source": "ecb_fx",
+  "status": 200,
+  "url": "https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"
+}
